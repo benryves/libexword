@@ -23,6 +23,7 @@
 #define _UTIL_H
 
 #if defined(__MINGW32__)
+# include <direct.h>
 # define mkdir(path, mode) _mkdir(path)
 # define PATH_SEP "\\"
 #else
