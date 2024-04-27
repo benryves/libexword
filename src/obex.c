@@ -24,6 +24,12 @@
  *
  */
 
+#if defined(__MINGW32__)
+# include <Winsock2.h>
+#else
+# include <arpa/inet.h>
+#endif
+
 #include <stdlib.h>
 #include <string.h>
 
