@@ -535,7 +535,14 @@ void content(struct state *s)
 				int rsp = exword_get_file(s->device, "user.inf", &buffer, &len);
 				if (rsp == EXWORD_SUCCESS) {
 					user = xmalloc(len+1);
-					sscanf(buffer, "%s\n", user);
+					for (int i = 0; i < len; i++) {
+						user[i + 1] = 0;
+						if (buffer[i] > ' ') {
+							user[i] = buffer[i];
+						} else {
+							break;
+						}
+					}
 					free(buffer);
 				} else {
 					printf("No username specified.\n");
